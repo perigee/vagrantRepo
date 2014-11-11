@@ -1,0 +1,12 @@
+---
+ 
+- name: Download Zeromq
+  get_url: url=http://download.zeromq.org/zeromq-{{zmq_version}}.tar.gz dest=/tmp
+    
+- name: Untar Zeromq
+  command: chdir=/tmp creates=zeromq-{{zmq_version}} tar -xzf zeromq-{{zmq_version}}.tar.gz
+
+- name: Install Zeromq
+  shell: 'cd /tmp/zeromq-{{zmq_version}};{{ item }}'
+  with_items: zmq_install_cmd
+ 
