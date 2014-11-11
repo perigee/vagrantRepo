@@ -7,7 +7,6 @@
     - build-essential
     - libtool
     - pkg-config 
-    - build-essential
     - autoconf
     - automake
     - uuid-dev
@@ -61,9 +60,8 @@
     - include: tasks/pip.yml
       when: not pip_installed.stat.exists
 
-    #- name: install Cython
-    #  pip: name=Cython
-    #  when: not pip_installed.stat.exists
+    - name: install Cython
+      pip: name=Cython
     
     - name: install rupert requirements
       pip: requirements=/home/vagrant/working/rupert/requirements.txt
