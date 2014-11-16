@@ -20,13 +20,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "web" do |web|
     web.vm.synced_folder "working/", "/home/vagrant/working"
-    web.vm.network :forwarded_port, guest: 8080, host: 8011 
     web.vm.network :private_network, ip: "192.168.100.10" 
   end
 
-  config.vm.define "db" do |db|
+  #config.vm.define "db" do |db|
     #db.vm.synced_folder "working/", "/home/vagrant/working"
-  end
+  #end
 
 
 

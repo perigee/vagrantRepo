@@ -11,7 +11,12 @@
     - automake
     - uuid-dev
     - python-dev
+    
     #erlangpackages:
+
+    webapppkgs:
+    #- gunicorn
+    #- supervisor
 
 
     zmq_version: 4.0.5
@@ -37,9 +42,16 @@
     - name: upgrade the distro
       apt: upgrade=yes
 
-    - name: install packages
-      apt: pkg={{ item }} state=present
-      with_items: webpackages
+    #- name: install packages
+    #  apt: pkg={{ item }} state=present
+    #  with_items: webpackages
+
+
+## install the web application server	
+   - name: install web app server packages
+     apt: pkg={{ item }} state=present
+     with_items: webapppkgs   
+
       
     ## =========================================
     # ============= Install zeromq from source
@@ -63,6 +75,6 @@
     - name: install Cython
       pip: name=Cython
     
-    - name: install rupert requirements
-      pip: requirements=/home/vagrant/working/rupert/requirements.txt
+    #- name: install rupert requirements
+    #  pip: requirements=/home/vagrant/working/rupert/requirements.txt
   
